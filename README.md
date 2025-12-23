@@ -6,7 +6,7 @@ The project focuses on interfacing a DE-10 Lite FPGA to function as user inputs 
 
 # Features
 
-# Gameplay
+**Gameplay**
 
 - Players leave a growing trail behind them with their corresponding colours
 - Crashing into walls, trails, or opponents results in a death
@@ -97,9 +97,11 @@ Open **NIOS V Command Shell** and type the following when you are situated in th
 2. make GDB_SERVER
 
 Open a new **NIOS V Command Shell** window and type the following:
+
 3. make TERMINAL
 
 Open another **NIOS V Command Shell** window and type the following:
+
 4. make COMPILE 
 5. make RUN 
 
