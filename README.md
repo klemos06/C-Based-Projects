@@ -14,25 +14,25 @@ The project focuses on interfacing a DE-10 Lite FPGA to function as user inputs 
 - Winning player's colour displayed following 9 rounds of gameplay
 - Prints to terminal final score and initial welcome message.
 
-# Smooth & Responsive Controls
+**Smooth & Responsive Controls**
 - Debounced buttons providing precise inputs for accurate movements
 - 10 adjustablle switches each uniquely corresponding to a different game speed for beginner to advanced gameplay
 
-# Dynamic Game Loop
+**Dynamic Game Loop**
 
 - Continuous input polling and update-render cycle through VGA
 - Collision detection for walls, player trails, and opponents 
 - Updates player trails and positions readily with over 200 updates per second, but adjustable to desired difficulty
 
-# Visual Design
+**Visual Design**
 - Retro visuals with neon aesthetic and black background with white border mimicking old arcade games
 - High contrast visuals for easy gameplay readability
 - Obstacles to add depth to field of play
 
-# Single Player
+**Single Player**
 - Play against AI programmed to think 2 steps ahead for a challenging and ever-changing gameplay 
 
-Demo
+# Demo
 
 (Replace with real images or GIFs)
 
@@ -44,10 +44,10 @@ Start Menu
 
 # Tech Stack
 
-# Language
+**Language**
 - C — bare-metal programming for real-time game logic, rendering, and hardware control
 
-# Hardware & I/O
+**Hardware & I/O**
 
 - FPGA (DE10-Lite)
     - Memory-mapped VGA framebuffer for pixel-level graphics output
