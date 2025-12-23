@@ -232,64 +232,9 @@ int speedMod(void) {
     return newSpeed;
 }
 
-/*void set_mtimer( volatile uint32_t *time_ptr, uint64_t new_time64 )
-{
-    *(time_ptr+0) = (uint32_t)0;
-    *(time_ptr+1) = (uint32_t)(new_time64>>32);
-    *(time_ptr+0) = (uint32_t)new_time64;
-}
 
-uint64_t get_mtimer( volatile uint32_t *time_ptr )
-{
-    uint32_t mtime_h, mtime_l;
-    do {
-        mtime_h = *(time_ptr+1);
-        mtime_l = *(time_ptr+0);
-    } while( mtime_h != *(time_ptr+1) );
-    return ((uint64_t)mtime_h << 32) | mtime_l;
-}
-
-void setup_mtimecmp()
-{
-    uint64_t mtime64 = get_mtimer( mtime_ptr );
-    mtime64 = (mtime64/PERIOD+1) * PERIOD;
-    set_mtimer( mtime_ptr+2, mtime64 );
-}
-
-void mtimer_ISR(void)
-{
-    uint64_t mtimecmp64 = get_mtimer( mtime_ptr+2 );
-    mtimecmp64 += PERIOD;
-    set_mtimer( mtime_ptr+2, mtimecmp64 );
-
-    tick = 1;
-    counter = counter + 1; // debug
-}
-
-void key_ISR()
-{
-    volatile uint32_t *KEY_ptr = (uint32_t *)KEY_BASE;
-
-    static uint32_t prev = 0x3;
-    uint32_t now = *KEY_ptr;
-
-    int edge = (~now) & prev; // detect new press
-
-    edgePress = edge; // save globally
-
-    if (edge & 0x1) human.dir = turnLeft(human.dir);
-    if (edge & 0x2) human.dir = turnRight(human.dir);
-
-    prev = now;
-    *KEY_ptr = 0xF; // clear edgecapture
-}
-
-*/
  // main
 int main() {
-
-   /*setup_mtimecmp();       // start periodic interrupts
-    setup_cpu_irqs(0x80 | 0x02);   // enable mtimer IRQ only */
 
     printf("RACERS, START YOUR ENGINES!!\n");
     clearScreen(blk); // set screen to blk
@@ -323,38 +268,7 @@ int main() {
         // draw starting positions
         drawPixel(human.y,human.x,human.colour);
         drawPixel(robot.y,robot.x,robot.colour);
-
-        /*while (human.alive || robot.alive) {
-    
-    if (tick) {
-        tick = 0;  // clear event
-
-        robotDecide(&robot);
-
-        if (human.alive) {
-            int ny=human.y, nx=human.x;
-            stepPos(&ny,&nx,human.dir);
-            if (!insidePlayable(ny,nx,border)||detectObstacleAhead(ny,nx))
-                human.alive=0;
-            else { drawPixel(ny,nx,grn); human.y=ny; human.x=nx; }
-        }
-
-        if (robot.alive) {
-            int ny=robot.y, nx=robot.x;
-            stepPos(&ny,&nx,robot.dir);
-            if (!insidePlayable(ny,nx,border)||detectObstacleAhead(ny,nx))
-                robot.alive=0;
-            else { drawPixel(ny,nx,red); robot.y=ny; robot.x=nx; }
-        }
-
-        if (!human.alive && robot.alive) { scoreR++; displayScore(scoreH,scoreR); break; }
-        if (!robot.alive && human.alive) { scoreH++; displayScore(scoreH,scoreR); break; }
-        if (!human.alive && !robot.alive) break;
-    }
-}
-*/
-
-
+		
         // while they are alive, then move via outputs from the functions
         while (human.alive || robot.alive) {
             humanDecide(&human);
@@ -405,3 +319,4 @@ int main() {
     printf("Game over. Final scores: Human=%d Robot=%d\n",scoreH,scoreR);
     return 0;
 }
+
