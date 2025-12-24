@@ -45,7 +45,7 @@ Start Menu
 # Tech Stack
 
 **Language**
-- C — bare-metal programming for real-time game logic, rendering, and hardware control
+- C: bare-metal programming for real-time game logic, rendering, and hardware control
 
 **Hardware & I/O**
 
